@@ -1,5 +1,6 @@
 // Añadir Express
 const express = require('express')
+const res = require('express/lib/response')
 //Crear app de Express
 const app = express()
 app.use(express.json()) // Indicamos que se usara JSON
@@ -43,4 +44,12 @@ app.put('/v1/explorers/:id', (req,res) => {
     console.log(`Update explorer with id ${req.params.id}`)
     const requestBody = req.body // parametros de un cliente
     res.status(200).json({message: "Updated!"})
+})
+
+// DELETE method
+app.delete('/v1/explorers/:id', (req,res) => {
+    console.log(`API explorers DELETE request ${new Date()}`)
+    console.log(`Delete explorer with id ${req.params.id}`)
+    const requestBody = req.body // parametros de un cliente
+    res.status(200).json({message: "Deleted"})
 })
